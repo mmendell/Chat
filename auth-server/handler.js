@@ -65,7 +65,7 @@ module.exports.getAccessToken = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
-    redirect_uris[0],
+    redirect_uris[0]
   );
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
