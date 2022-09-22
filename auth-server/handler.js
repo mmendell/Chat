@@ -21,7 +21,7 @@ const credentials = {
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   redirect_uris: ["https://mmendell.github.io/Chat"],
-  javascript_origins: ["https://mmendell.github.io", "http://localhost:3000"],
+  javascript_origins: ["https://mmendell.github.io", "http://localhost:8080"],
 };
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
 const oAuth2Client = new google.auth.OAuth2(
@@ -82,6 +82,7 @@ module.exports.getAccessToken = async (event) => {
         statusCode: 200,
         headers: {
           "Access-Control-Allow-Origin": "*",
+          'Access-Control-Allow-Credentials': true,
         },
         body: JSON.stringify(token),
       };
@@ -92,6 +93,7 @@ module.exports.getAccessToken = async (event) => {
         statusCode: 500,
         headers: {
           "Access-Control-Allow-Origin": "*",
+          'Access-Control-Allow-Credentials': true,
         },
         body: JSON.stringify(err),
       };
